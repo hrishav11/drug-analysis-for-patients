@@ -27,6 +27,7 @@ Labels come from the star rating as weak supervision: **8–10 = positive, 5–7
 | Model | Accuracy | Weighted F1 | Macro F1 |
 |---|---|---|---|
 | Majority class (always "positive") | 0.604 | – | – |
+| TF-IDF (1–2 grams) + logistic regression | 0.772 | 0.744 | 0.622 |
 | **BioBERT** | **0.819** | **0.812** | **0.717** |
 
 | Class | Precision | Recall | F1 | Reviews |
@@ -41,6 +42,7 @@ Labels come from the star rating as weak supervision: **8–10 = positive, 5–7
 | 2 | 0.367 | 0.524 | 0.819 | 0.812 |
 
 **Takeaways:**
+- BioBERT beats the TF-IDF baseline by 4.7 points of accuracy and 0.07 weighted F1, and the gap is largest on the hardest class: neutral F1 rises from 0.26 to 0.43.
 - The model is strong on clear opinions; positive and negative both exceed 0.8 F1.
 - Neutral is the weak class. Ratings of 5–7 often mix praise and complaints, and neutral is also the smallest class (about 15%). Class weighting or an ordinal-regression formulation are natural next steps.
 - Validation loss rises in epoch 2 while training loss keeps falling, an early sign of overfitting, so 2 epochs is a sensible stopping point. The best checkpoint is kept by F1.
